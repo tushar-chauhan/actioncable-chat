@@ -1,0 +1,27 @@
+<style type="text/css">
+.userlist{
+  list-style-type: none;
+}
+.userlist > li > a{
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #eee;
+  font-size: 14px;
+  display: block;
+  margin-bottom: -1px;
+}
+.userlist > li > a:hover{
+  background: #ddd;
+}
+</style>
+<div class="row">
+  <div class="small-6 medium-3 end">
+    <ul class="userlist"><label>Users</label>
+      <% @users.each_with_index do |user, index| %>
+        <li>
+          <%= link_to user.name, "javascript:;", class: "start-conversation", "data-sid" => current_user.id, "data-rid" => user.id %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  AllowHeredoc: true
+Metrics/MethodLength:
+  Max: 30
