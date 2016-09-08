@@ -7,7 +7,7 @@ root.chatBoxes = []
 
 ready = () ->
   console.log 'Loaded ready()'
-  chatBox =
+  root.chatBox =
     chatWith: (conversation_id) ->
       chatBox.createChatBox conversation_id
       $("#chatbox_" + conversation_id + " .chatboxtextarea").focus()
@@ -25,14 +25,15 @@ ready = () ->
 
     restructure: () ->
       align = 0
-      for x in chatBoxes
-        chatBox = chatBoxes[x]
-        if $("#chatbox_" + chatbox_id).css('display') != 'none'
+      for x of chatBoxes
+        x = x
+        chatbox_id = chatBoxes[x]
+        if $('#chatbox_' + chatbox_id).css('display') != 'none'
           if align == 0
-            $("#chatbox_" + chatbox_id).css('right', '20px')
+            $('#chatbox_' + chatbox_id).css 'right', '20px'
           else
             width = align * (280 + 7) + 20
-            $("#chatbox_" + chatbox_id).css('right', width + 'px')
+            $('#chatbox_' + chatbox_id).css 'right', width + 'px'
           align++
       return
 
@@ -43,6 +44,7 @@ ready = () ->
           chatBox.restructure()
 
         $("#chatbox_" + conversation_id + " .chatboxtextarea").focus()
+        return
 
       $("body").append(
         '<div id="chatbox_' + conversation_id + '" class="chatbox"></div>'
@@ -64,8 +66,9 @@ ready = () ->
 
       chatBoxeslength = 0
 
-      for x in chatBoxes
-        if $("#chatbox_" + chatBoxes[x]).css('display') != 'none'
+      for x of chatBoxes
+        x = x
+        if $('#chatbox_' + chatBoxes[x]).css('display') != 'none'
           chatBoxeslength++
 
       if chatBoxeslength == 0
@@ -84,9 +87,11 @@ ready = () ->
 
         minimize = 0
 
-        for j in minimizedChatBoxes
+        j = 0
+        while j < minimizedChatBoxes.length
           if minimizedChatBoxes[j] == conversation_id
             minimize = 1
+          j++
 
         if minimize == 1
           $('#chatbox_' + conversation_id + ' .chatboxcontent')
@@ -160,9 +165,11 @@ ready = () ->
 
         newCookie = ''
 
-        for i in minimizedChatBoxes
+        i = 0
+        while i < minimizedChatBoxes.length
           if minimizedChatBoxes[i] != conversation_id
             newCookie += conversation_id + '|'
+          i++
 
         newCookie = newCookie.slice(0, -1)
 
