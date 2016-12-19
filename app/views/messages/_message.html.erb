@@ -1,0 +1,11 @@
+<li class="<%= self_or_other(message) %>">
+  <div class="avatar">
+    <img src="https://gp6.googleusercontent.com/-B5jE5vTYIag/AAAAAAAAAAI/AAAAAAAAAAA/fDz6mLK1CIs/s48-c-k-no/photo.jpg?sz=50" />
+  </div>
+  <div class="chatboxmessagecontent">
+    <p><%= message.body %></p>
+    <time datetime='<%= message.created_at %>' title='<%= message.created_at.strftime("%d %b  %Y at %I:%M%p") %>'>
+      <%= message_interlocutor(message).name %> • <%= time_ago_in_words(message.created_at) %>
+    </time>
+  </div>
+</li>

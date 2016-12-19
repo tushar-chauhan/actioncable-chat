@@ -127,14 +127,15 @@ ready = () ->
 
 
     checkInputKey: (event, chatboxtextarea, conversation_id) ->
-      if event.keyCode == 13 && event.shiftKey == 0
+      if event.keyCode == 13 && !event.shiftKey
         event.preventDefault()
 
         message = chatboxtextarea.val()
         message = message.replace(/^\s+|\s+$/g, "")
 
         if message != ''
-          $('#conversation_form_' + conversation_id).submit()
+          App.room.send_message message, conversation_id
+
           $(chatboxtextarea).val('')
           $(chatboxtextarea).focus()
           $(chatboxtextarea).css('height', '44px')

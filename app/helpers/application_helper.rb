@@ -10,7 +10,6 @@ module ApplicationHelper
 
   def flash_messages(*)
     flash.each do |msg_type, message|
-      puts msg_type
       concat(
         content_tag(
           :div,

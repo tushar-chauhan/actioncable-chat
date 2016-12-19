@@ -1,3 +1,3 @@
-# README
+### A chat application using Rails 5 with Action Cable
 
-Actioncable version of [Rails application](https://github.com/tushar-chauhan/webapp_chat) & [Faye server](https://github.com/tushar-chauhan/faye_server) based chat application
+Action Cable version of [webapp_chat](https://github.com/tushar-chauhan/webapp_chat) & [faye_server](https://github.com/tushar-chauhan/faye_server) backed chat application

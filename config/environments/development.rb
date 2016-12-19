@@ -53,4 +53,19 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_cable.url = 'ws://localhost:3000/cable'
+  config.web_socket_server_url = 'ws://localhost:3000/cable'
+
+  # Allow any origin
+  # config.action_cable.allowed_request_origins = [
+  #   %r{/http:\/\/*/},
+  #   %r{/https:\/\/*/}
+  # ]
+
+  # config.action_cable.allowed_request_origins = [
+  #   'http://0.0.0.0', 'http://0.0.0.0:3000', 'http://localhost',
+  #   'http://localhost:3000'
+  # ]
+
+  config.action_cable.disable_request_forgery_protection = true
 end
